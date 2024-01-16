@@ -46,6 +46,6 @@
 			</plugin>
             
         </plugins>
-        <finalName>Random-Number-Generator</finalName>
+        <finalName>randomnumbergenerator</finalName>
     </build>
 </project>
