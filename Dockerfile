@@ -1,8 +1,11 @@
-FROM openjdk:11
-VOLUME /tmp
+FROM eclipse-temurin:19-alpine
+
+RUN mkdir -p /var/logs
+VOLUME /var/logs
 EXPOSE 8080
-COPY . /usr/src/app
-WORKDIR /usr/src/app
-ARG JAR_FILE=./target/RandomNumberGenerator-0.0.1-SNAPSHOT.jar
-ADD ${JAR_FILE} RandomNumberGenerator.jar
-ENTRYPOINT ["java","-jar", "RandomNumberGenerator.jar"]
+
+WORKDIR /app
+ARG JAR_FILE=/target/*.jar
+COPY ${JAR_FILE} app.jar
+
+ENTRYPOINT ["java", "-jar", "app.jar"]
