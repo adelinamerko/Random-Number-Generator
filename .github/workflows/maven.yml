@@ -20,10 +20,11 @@ jobs:
       run: mvn -B package --file pom.xml
     # push to docker hub
     - name: Publish to Docker Hub
-      uses: docker/build-push-action@v1  
+      #changed the v1 to v2
+      uses: docker/build-push-action@v2
       with:
 
-       username: merkoadelina
-       password:  Adelina.2002@
-       repository: adelinamerko/randomnumbergenerator
-       tags: ${{github.run_number}} #latest
+    username: ${{ secrets.DOCKER_HUB_USERNAME }}
+    password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+    repository: adelinamerko/randomnumbergenerator
+    tags: ${{github.run_number}} #latest
